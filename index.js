@@ -34,6 +34,9 @@ server.get("/ping", (req, res) => res.send("pong"));
 server.get("/logs", (req, res) => res.sendFile("logs.txt", { root: __dirname }));
 
 server.use("/downloads", express.static("downloads"), serveIndex("downloads", { icons: true }));
+//From the Express API reference
+
+server.use(express.static(__dirname + '/public'));
 
 server.use("/api/v1/drive/folder", async (req, res) => {
   const folderId = req.query.id;
